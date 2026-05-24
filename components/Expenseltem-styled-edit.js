@@ -1,5 +1,5 @@
 // Importar o React e o Hook useState para controle de estado
-import React, {useState} from "react";
+import React, {use, useState} from "react";
 
 // Importar os componentes nativos para construção da Interface
 import {
@@ -11,3 +11,13 @@ import {
     StyleSheet, // Estilização
     Alert, // Alertas do sistema
 } from "react-native";
+
+// Componente principal
+
+export default function HomeScreen() {
+    // Estados do formulario
+    const [descricao, setDescricao] = useState(""); // Descrição de gasto
+    const [valor, setValor] = useState(""); // Valor do gastos
+    const [gastos, setGastos] = useState([]); // Lista de gastos
+    const [editandoId, setRditandoId] = useState(null); // ID do gastos em edição
+}
