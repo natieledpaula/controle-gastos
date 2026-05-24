@@ -89,5 +89,76 @@ export default function HomeScreen() {
     const totalGastos = gastos
     .reduce((acc, item) => acc + parseFloat(item.valor), 0)
     .toFixed(2);
+
+    // Interface visual
+    return (
+    <View style={styles.container}>
+    {/* Título */}
+    <Text style={styles.title}>Controle de Gastos</Text>
+
+    {/* Campo descrição */}
+    <TextInput
+        style={styles.input}
+        placeholder="Descrição do Gasto"
+        value={descricao}
+        onChangeText={setDescricao}
+    />
+
+    {/* Campo valor */}
+    <TextInput
+        style={styles.input}
+        keyboardType="numeric"
+        placeholder="Valor"
+        value={valor}
+        onChangeText={setValor}
+    />
+
+      {/* Botão adicionar/atualizar */}
+    <TouchableOpacity
+        style={styles.button}
+        onPress={adicionarOuAtualizarGasto}
+    >
+        <Text style={styles.buttonText}>
+        {editandoId !== null ? "Atualizar Gasto" : "Adicionar Gasto"}
+        </Text>
+    </TouchableOpacity>
+
+      {/* Exibição total */}
+    <Text style={styles.total}>Total: R$ {totalGastos}</Text>
+
+      {/* Lista de gastos */}
+    <FlatList
+        data={gastos}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+        <View style={styles.itemContainer}>
+            {/* Texto do item */}
+            <Text style={styles.item}>
+              {item.descricao} - R$ {item.valor}
+            </Text>
+
+            {/* Ações */}
+            <View style={styles.actions}>
+              {/* Botão editar */}
+              <TouchableOpacity
+                onPress={() => editarGasto(item)}
+                style={styles.editButton}
+              >
+                <Text style={styles.actionText}>Editar</Text>
+              </TouchableOpacity>
+
+              {/* Botão remover */}
+              <TouchableOpacity
+                onPress={() => removerGasto(item.id)}
+                style={styles.removeButton}
+              >
+                <Text style={styles.actionText}>Excluir</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+    );
 }
 
