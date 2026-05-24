@@ -113,7 +113,7 @@ export default function HomeScreen() {
         onChangeText={setValor}
     />
 
-      {/* Botão adicionar/atualizar */}
+    {/* Botão adicionar/atualizar */}
     <TouchableOpacity
         style={styles.button}
         onPress={adicionarOuAtualizarGasto}
@@ -123,10 +123,10 @@ export default function HomeScreen() {
         </Text>
     </TouchableOpacity>
 
-      {/* Exibição total */}
+    {/* Exibição total */}
     <Text style={styles.total}>Total: R$ {totalGastos}</Text>
 
-      {/* Lista de gastos */}
+    {/* Lista de gastos */}
     <FlatList
         data={gastos}
         keyExtractor={(item) => item.id}
@@ -134,31 +134,109 @@ export default function HomeScreen() {
         <View style={styles.itemContainer}>
             {/* Texto do item */}
             <Text style={styles.item}>
-              {item.descricao} - R$ {item.valor}
+            {item.descricao} - R$ {item.valor}
             </Text>
 
             {/* Ações */}
             <View style={styles.actions}>
-              {/* Botão editar */}
-              <TouchableOpacity
+            {/* Botão editar */}
+            <TouchableOpacity
                 onPress={() => editarGasto(item)}
                 style={styles.editButton}
-              >
+            >
                 <Text style={styles.actionText}>Editar</Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
 
-              {/* Botão remover */}
-              <TouchableOpacity
+            {/* Botão remover */}
+            <TouchableOpacity
                 onPress={() => removerGasto(item.id)}
                 style={styles.removeButton}
-              >
+            >
                 <Text style={styles.actionText}>Excluir</Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
             </View>
-          </View>
+        </View>
         )}
-      />
+    />
     </View>
     );
 }
 
+// Estilos da aplicação
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20,
+        marginTop: 50,
+        backgroundColor: "#fff",
+    },
+
+    title: {
+        fontSize: 28,
+        fontWeight: "bold",
+        marginBottom: 20,
+        textAlign: "center",
+    },
+
+    input: {
+        borderWidth: 1,
+        borderColor: "#ccc",
+        padding: 12,
+        borderRadius: 8,
+        marginBottom: 12,
+    },
+
+    button: {
+        backgroundColor: "#007bff",
+        padding: 15,
+        borderRadius: 8,
+        alignItems: "center",
+        marginBottom: 15,
+    },
+
+    buttonText: {
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: 16,
+    },
+
+    total: {
+        fontSize: 18,
+        fontWeight: "bold",
+        marginBottom: 15,
+    },
+
+    itemContainer: {
+        backgroundColor: "#f5f5f5",
+        padding: 15,
+        borderRadius: 8,
+        marginBottom: 10,
+    },
+
+    item: {
+        fontSize: 16,
+        marginBottom: 10,
+    },
+
+    actions: {
+        flexDirection: "row",
+    },
+
+    editButton: {
+        backgroundColor: "#28a745",
+        padding: 10,
+        borderRadius: 6,
+        marginRight: 10,
+    },
+
+    removeButton: {
+        backgroundColor: "#dc3545",
+        padding: 10,
+        borderRadius: 6,
+    },
+
+    actionText: {
+        color: "#fff",
+        fontWeight: "bold",
+    },
+});
