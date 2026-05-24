@@ -47,8 +47,19 @@ export default function HomeScreen() {
         setGastos(gastosAtualizados); // Atualiza lista
         setEditandoId(null); // Sai do modo edição
         } else {
-            
+            // Criação de novo gasto
+            const novoGasto = {
+                id: Date.now().toString(), // Gerar ID unico
+                descricao,
+                valor: parseFloat(valor).toFixed(2),
+            };
+
+            setGastos([...gastos, novoGasto]); // Adicionar novo gasto
         }
-    }
+
+        //Limpa formulario
+        setDescricao("");
+        setValor("");
+    };
 }
 
