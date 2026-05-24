@@ -20,4 +20,20 @@ export default function HomeScreen() {
     const [valor, setValor] = useState(""); // Valor do gastos
     const [gastos, setGastos] = useState([]); // Lista de gastos
     const [editandoId, setRditandoId] = useState(null); // ID do gastos em edição
+
+    // Adicionar ou atuaizar gastos
+    const AdicionarOuAtualizarGasto = () => {
+        // Validar: campos vazios
+        if(!descricao || !valor) {
+            Alert.alert("Erro", "Digite um valor numerico!");
+            return;
+        }
+
+        // Validação: valor precisa ser numerico
+        if(isNaN(parseFloat(valor))) {
+            Alert.alert("Erro", "Digite um valor numerico!");
+            return;
+        }
+    }
 }
+
