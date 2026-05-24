@@ -34,6 +34,21 @@ export default function HomeScreen() {
             Alert.alert("Erro", "Digite um valor numerico!");
             return;
         }
+
+        // Atualização de gasto existente
+        if(editandoId !== null) {
+            const gastosAtualizados = gastos.map((item) => item.id === editandoId? {
+                ...item, 
+                descricao,
+                valor: parseFloat(valor).toFixed(2),
+            }
+            :item,
+        );
+        setGastos(gastosAtualizados); // Atualiza lista
+        setEditandoId(null); // Sai do modo edição
+        } else {
+            
+        }
     }
 }
 
