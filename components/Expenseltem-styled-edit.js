@@ -85,6 +85,9 @@ export default function HomeScreen() {
         setEditandoId(item.id);
     };
 
-    
+    // Calculo total dos gastos
+    const totalGastos = gastos
+    .reduce((acc, item) => acc + parseFloat(item.valor), 0)
+    .toFixed(2);
 }
 
