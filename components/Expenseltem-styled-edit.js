@@ -61,5 +61,20 @@ export default function HomeScreen() {
         setDescricao("");
         setValor("");
     };
+
+    // Remover Gasto
+    const RemoverGasto = (id) => {
+        //Remove item pelo ID
+        setGastos(gastos.filter((item) => item.id !== id));
+
+        // Caso esteja editando o item removido
+        if(editandoId === id) {
+            setEditandoId(null);
+            setDescricao("");
+            setValor("");
+        }
+    };
+
+    
 }
 
