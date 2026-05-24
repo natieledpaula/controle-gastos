@@ -75,6 +75,16 @@ export default function HomeScreen() {
         }
     };
 
+    // Editar gasto
+    const editarGasto = (item) => {
+        // Preenche formulario
+        setDescricao(item.descricao);
+        setValor(item.valor);
+
+        // Salvar ID do item em edição
+        setEditandoId(item.id);
+    };
+
     
 }
 
